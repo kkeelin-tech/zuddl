@@ -1,171 +1,87 @@
 :root {
-  --font-mono: 'Roboto Mono', monospace;
+  --figma-blue: #4d49fc;
+  --figma-cyan: #00b6ff;
+  --figma-dark-green: #0a5c35;
+  --figma-kelly-green: #24cb71;
+  --figma-neon-green: #67ff7f;
+  --figma-lime: #e4ff97;
+  --figma-mint: #f3ffe3;
+  --figma-gold: #b98e01;
+  --figma-purple: #874fff;
+  --figma-dusty-violet: #cb9fd2;
+  --figma-periwinkle: #c4baff;
+  --figma-maroon: #721c1c;
+  --figma-hot-red: #ff3737;
+  --figma-orange: #ff7237;
+  --figma-hot-pink: #ff01e5;
+  --figma-peach: #ffc9c1;
+  --figma-brown: #877a7a;
+  --figma-white: #ffffff;
+  --figma-light-gray: #e2e2e2;
+  --figma-medium-gray: #6d6e6d;
+  --figma-black: #000000;
+
+  --surface-canvas: var(--figma-white);
+  --surface-subtle: var(--figma-light-gray);
+  --text-primary: var(--figma-black);
+  --text-on-dark: var(--figma-white);
+
+  --font-sans: 'Figma Sans', var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Figma Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --radius-control: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-panel: 1rem;
+  --radius-pill: 999px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  font-size: 18px;
-  line-height: 32px;
+html,
+body {
+  min-height: 100%;
+}
 
-  background: rgb(0, 0, 0);
+html {
+  background: var(--surface-canvas);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
-html,
-body,
-#app {
-  height: 100%;
-}
-
 body {
-  font-family: system-ui;
-  font-size: 18px;
-  line-height: 32px;
-
   margin: 0;
-  color: rgb(1000, 1000, 1000);
-
-  /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-  @media (max-width: 1024px) {
-    font-size: 15px;
-    line-height: 24px;
-  }
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.4;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+:focus {
+  outline: none;
 }
 
-h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
-  font-weight: bold;
-
-  /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-  @media (max-width: 1024px) {
-    margin: 24px 0;
-    font-size: 42px;
-    line-height: 42px;
-  }
-
-  /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-  @media (max-width: 768px) {
-    font-size: 38px;
-    line-height: 38px;
-  }
-
-  /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-  @media (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
+:focus-visible {
+  outline: 2px solid var(--figma-black);
+  outline-offset: 2px;
 }
 
-p {
-  margin: 24px 0;
-
-  /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-  @media (max-width: 1024px) {
-    margin: var(--spacer-3) 0;
-  }
-}
-
-a {
-  color: currentColor;
-
-  &:focus {
-    opacity: 0.8;
-    outline: none;
-  }
-
-  &:active {
-    opacity: 0.7;
-    outline: none;
-  }
-}
-
-svg {
-  vertical-align: middle;
-}
-
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 45px;
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow: hidden;
-
-  /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-  @media (max-width: 400px) {
-    padding: 24px;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-
-    h1 {
-      text-align: center;
-    }
-  }
-
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
-
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    /* stylelint-disable-next-line plugin/no-max-width-media-query -- TODO: pre-existing; migrate to a mobile-first min-width query */
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .codeLink {
-      text-decoration: none;
-      padding: 0 0.5rem;
-      background: rgb(60, 60, 60);
-      border-radius: 4px;
-    }
-  }
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--figma-blue);
+  outline-offset: 2px;
 }
